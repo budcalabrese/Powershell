@@ -1,9 +1,7 @@
-# Import the Active Directory module and continue if already installed
-
+#Import the Active Directory module; Continue if already installed
 Import-Module ActiveDirectory
 
-# Gathering variables for new account creation
-
+#Gathering variables for new account creation
 $FirstName = Read-Host "Enter First Name"
 $LastName = Read-Host "Enter Last Name"
 $AccountName = Read-Host "Enter account name (Example jsmith)"
@@ -12,7 +10,6 @@ $CopyUser = Read-Host "Enter a user to copy permissions from (Example jsmith)"
 $Password = Read-Host "Enter password for new account" -AsSecureString
 
 #Creates a new Active Directory user account using the variables above
-
 New-ADUser `
  -Name ("$FirstName $LastName") `
  -SamAccountName  ("$AccountName") `
@@ -25,8 +22,7 @@ New-ADUser `
  -Title "$Title" `
  -Enabled $true
 
-# Copies the group memberships of one user to another
-
+#Copies group membership of one user to the new user created above
 Get-ADUser -Identity $CopyUser -Properties memberof |
 Select-Object -ExpandProperty memberof |
 Add-ADGroupMember -Members $AccountName -PassThru |
