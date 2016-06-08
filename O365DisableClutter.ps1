@@ -1,4 +1,4 @@
-##This Script allows you to turn off clutter for ll of your users###
+##This Script allows you to turn off clutter for ll of your users##
 ##To Disable Clutters only for users who have it enabled uncomment line 18   
 
 #Prompts for your user crendtials 
